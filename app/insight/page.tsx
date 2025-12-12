@@ -1,67 +1,62 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { highlight } from "@/lib/highlight";
 
 const INSIGHTS = [
   {
-    slug: "pph",
-    chapter: "pengertian",
-    title: "Pengertian Pajak Penghasilan",
-    content: "Pajak Penghasilan dikenakan atas penghasilan yang diterima wajib pajak.",
+    id: 1,
+    title: "Pajak Penghasilan (PPh)",
+    description: "Pembahasan lengkap Pajak Penghasilan.",
   },
   {
-    slug: "ppn",
-    chapter: "dasar",
-    title: "Dasar Pajak Pertambahan Nilai",
-    content: "PPN adalah pajak atas konsumsi barang dan jasa.",
+    id: 2,
+    title: "Pajak Pertambahan Nilai (PPN)",
+    description: "Dasar dan penerapan PPN.",
   },
 ];
 
 export default function InsightPage() {
   const [query, setQuery] = useState("");
 
-  const filtered = INSIGHTS.filter(
-    (i) =>
-      i.title.toLowerCase().includes(query.toLowerCase()) ||
-      i.content.toLowerCase().includes(query.toLowerCase())
+  const filtered = INSIGHTS.filter((i) =>
+    i.title.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
-    <div className="px-6 py-16">
-      <div className="max-w-5xl mx-auto">
+    <div className="px-6 py-24 max-w-5xl mx-auto">
+      <h1 className="text-4xl font-bold">Insight Pajak</h1>
+      <p className="mt-3 text-gray-700">
+        Materi pajak disusun bertahap dan mudah dipahami.
+      </p>
 
-        <h1 className="text-4xl font-bold">Insight Pajak</h1>
-        <p className="mt-3 text-gray-700">
-          Materi pembelajaran pajak yang disusun bertahap dan mudah dipahami.
-        </p>
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Cari topik pajak…"
+        className="mt-8 w-full md:w-1/2 px-4 py-3 border rounded-xl"
+      />
 
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Cari insight pajak..."
-          className="mt-8 w-full md:w-1/2 px-4 py-3 border rounded-xl"
-        />
+      <div className="mt-10 grid md:grid-cols-2 gap-6">
+        {filtered.map((item) => (
+          <div
+            key={item.id}
+            className="p-6 bg-white rounded-xl shadow hover:shadow-md transition"
+          >
+            <h3 className="font-semibold text-lg">
+              {item.title}
+            </h3>
+            <p className="text-gray-600 mt-2">
+              {item.description}
+            </p>
 
-        <div className="mt-10 space-y-4">
-          {filtered.map((item) => (
-            <Link
-              key={item.title}
-              href={`/insight/${item.slug}/${item.chapter}?q=${query}`}
-              className="block p-5 bg-white rounded-xl shadow-sm hover:shadow-md"
+            <button
+              className="mt-4 text-sm font-medium text-orange-600 hover:underline"
+              onClick={() => alert("Detail insight akan segera tersedia")}
             >
-              <h3 className="font-semibold">{item.title}</h3>
-              <div
-                className="text-sm text-gray-600 mt-2"
-                dangerouslySetInnerHTML={{
-                  __html: highlight(item.content, query),
-                }}
-              />
-            </Link>
-          ))}
-        </div>
-
+              Baca selengkapnya →
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
