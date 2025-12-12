@@ -1,6 +1,6 @@
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import PageTransition from "./components/PageTransition";
+import Navbar from "@/components/Navbar";
+import TransitionProvider from "@/components/TransitionProvider";
 
 export default function RootLayout({
   children,
@@ -9,10 +9,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body>
+      <body className="bg-[#FAF3E1] text-[#222]">
+        {/* Navbar fixed */}
         <Navbar />
-        <main className="pt-6">
-          <PageTransition>{children}</PageTransition>
+
+        {/* Main content */}
+        <main className="pt-24">
+          <TransitionProvider>
+            {children}
+          </TransitionProvider>
         </main>
       </body>
     </html>
