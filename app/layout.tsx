@@ -1,11 +1,6 @@
 import "./globals.css";
-import type { Metadata } from "next";
 import Navbar from "./components/Navbar";
-
-export const metadata: Metadata = {
-  title: "TAXMIN",
-  description: "Trust and Verify",
-};
+import PageTransition from "./components/PageTransition";
 
 export default function RootLayout({
   children,
@@ -13,10 +8,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-[#FAF3E1] text-[#222]">
+    <html lang="id">
+      <body>
         <Navbar />
-        <main className="pt-6">{children}</main>
+        <main className="pt-6">
+          <PageTransition>{children}</PageTransition>
+        </main>
       </body>
     </html>
   );

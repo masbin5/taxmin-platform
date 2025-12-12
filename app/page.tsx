@@ -1,151 +1,111 @@
 "use client";
 
 import { motion } from "framer-motion";
+import AnimatedButton from "./components/AnimatedButton";
+import ProgressBar from "./components/ProgressBar";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+    <div className="overflow-x-hidden">
 
-      {/* NAVBAR */}
-      <header className="flex items-center justify-between px-6 py-5 backdrop-blur-md bg-white/80 shadow-sm sticky top-0 z-40">
-        <div className="flex items-center gap-2">
-          <img src="/taxmin-logo.jpg" alt="TAXMIN" className="w-10 h-10 rounded" />
-          <h1 className="font-bold text-xl text-taxmin-blue">TAXMIN</h1>
-        </div>
-        <button className="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition">
-          Login
-        </button>
-      </header>
-
-      {/* HERO SECTION */}
-      <section className="px-6 py-24 bg-animated text-white rounded-b-3xl shadow-lg">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-
-          {/* LEFT */}
-          <motion.div
-            className="flex-1"
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+      {/* HERO */}
+      <section className="bg-[#FF6D1F] text-white px-6 py-28 rounded-b-[48px]">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-4xl md:text-6xl font-bold leading-tight"
           >
-            <h2 className="text-4xl lg:text-6xl font-extrabold leading-tight drop-shadow-md">
-              Trust and Verify <br />
-              with <span className="text-taxmin-orange">TAXMIN</span>
-            </h2>
+            Hai, ada yang bisa <br />
+            <span className="underline decoration-white/40">taxmin</span> bantu?
+          </motion.h1>
 
-            <p className="mt-4 text-lg opacity-90">
-              Platform otomatisasi pemeriksaan pajak untuk insight yang cepat,
-              akurat, dan efisien — tanpa ribet.
-            </p>
+          <p className="mt-6 max-w-2xl mx-auto text-white/90 text-lg">
+            taxmin.id adalah ruang belajar dan referensi pajak —  
+            dibuat agar aturan terasa lebih masuk akal dan manusiawi.
+          </p>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              className="mt-6 px-6 py-3 bg-taxmin-orange text-white font-semibold rounded-lg shadow-md hover:bg-orange-500 transition"
+          <motion.div
+            className="mt-10 flex justify-center gap-4 flex-wrap"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Link
+              href="/insight"
+              className="px-6 py-3 bg-white text-[#FF6D1F] font-semibold rounded-xl shadow"
             >
-              Mulai Sekarang
-            </motion.button>
-          </motion.div>
+              Lihat Insight
+            </Link>
 
-          {/* RIGHT */}
-          <motion.div
-            className="flex-1"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <img
-              src="https://images.pexels.com/photos/3184613/pexels-photo-3184613.jpeg"
-              alt="Illustration"
-              className="rounded-xl shadow-2xl"
-            />
+            <Link
+              href="/question"
+              className="px-6 py-3 border border-white rounded-xl font-semibold"
+            >
+              Punya Pertanyaan?
+            </Link>
           </motion.div>
-
         </div>
       </section>
 
-      {/* WHY TAXMIN */}
-      <section className="px-6 py-20 bg-white">
-        <motion.h3
-          className="text-3xl font-bold text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Kenapa Memilih TAXMIN?
-        </motion.h3>
+      {/* SPILL FEATURES */}
+      <section className="px-6 py-24 bg-[#FAF3E1]">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {[
             {
-              title: "Analisis Otomatis",
-              desc: "TAXMIN membaca pertanyaan Anda dan langsung membuat insight.",
+              title: "Insight Pajak",
+              desc: "Materi belajar pajak yang disusun rapi dan mudah dipahami.",
             },
             {
-              title: "Akurat & Cepat",
-              desc: "Teknologi modern yang memproses data dengan presisi.",
+              title: "Highlight & Opini",
+              desc: "Berita dan sudut pandang seputar ekonomi dan perpajakan.",
             },
             {
-              title: "Mudah Digunakan",
-              desc: "UI simple — sangat nyaman digunakan di HP maupun laptop.",
+              title: "Tanya Pajak",
+              desc: "Ajukan pertanyaan dan dapatkan jawaban yang relevan.",
             },
           ].map((item, i) => (
             <motion.div
               key={i}
-              className="p-6 rounded-xl bg-white shadow-md border border-gray-100 hover:shadow-xl transition"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-            >
-              <h4 className="text-xl font-semibold text-taxmin-blue">
-                {item.title}
-              </h4>
-              <p className="text-gray-600 mt-2">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section className="px-6 py-20 bg-gray-50">
-        <motion.h3
-          className="text-3xl font-bold text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Bagaimana Cara Kerjanya?
-        </motion.h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto mt-12">
-          {[
-            "Masukkan pertanyaan pajak",
-            "Sistem memproses secara otomatis",
-            "TAXMIN memberikan insight terbaik",
-          ].map((text, i) => (
-            <motion.div
-              key={i}
-              className="text-center"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition"
             >
-              <div className="text-taxmin-blue text-4xl font-bold">
-                {i + 1}
-              </div>
-              <p className="mt-3 text-gray-700 font-semibold">{text}</p>
+              <h3 className="text-xl font-semibold text-[#222]">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-gray-600">{item.desc}</p>
             </motion.div>
           ))}
+
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="py-8 text-center bg-white text-gray-600 mt-10 border-t">
-        © {new Date().getFullYear()} TAXMIN – Trust and Verify
-      </footer>
+      {/* CTA */}
+      <section className="px-6 py-20 text-center">
+        <h2 className="text-3xl font-bold text-[#222]">
+          Bingung mulai dari mana?
+        </h2>
+        <p className="mt-4 text-gray-600">
+          taxmin siap menemani kamu memahami pajak, pelan-pelan tapi pasti.
+        </p>
 
+        <Link
+          href="/question"
+          className="inline-block mt-8 px-8 py-4 bg-[#FF6D1F] text-white rounded-xl font-semibold"
+        >
+          Tanya ke taxmin
+        </Link>
+      </section>
+
+      <footer className="py-10 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} taxmin.id — Trust and Verify
+      </footer>
     </div>
   );
 }

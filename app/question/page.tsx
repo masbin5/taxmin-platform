@@ -1,45 +1,43 @@
-"use client";
-import { useState } from "react";
-
 export default function QuestionPage() {
-  const [status, setStatus] = useState("");
-
-  function handleSubmit(e: any) {
-    e.preventDefault();
-    setStatus("Ticket berhasil dibuat! (belum tersambung DB)");
-  }
-
   return (
-    <div className="max-w-xl mx-auto px-4 py-6">
-      <h1 className="text-3xl font-bold mb-4">Buat Ticket Pajak</h1>
+    <div className="px-6 py-16">
+      <div className="max-w-3xl mx-auto">
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input 
-          className="border p-3 rounded w-full"
-          placeholder="Nama lengkap"
-        />
+        <h1 className="text-4xl font-bold">
+          Punya Pertanyaan Pajak?
+        </h1>
 
-        <select 
-          className="border p-3 rounded w-full"
-        >
-          <option>PPh</option>
-          <option>PPN</option>
-          <option>PBB</option>
-          <option>Lainnya</option>
-        </select>
+        <p className="mt-4 text-gray-700">
+          Sampaikan pertanyaanmu. taxmin akan membantu
+          memberikan jawaban yang relevan dan terarah.
+        </p>
 
-        <textarea 
-          className="border p-3 rounded w-full"
-          rows={5}
-          placeholder="Deskripsi masalah pajak"
-        />
+        <form className="mt-10 space-y-6 bg-white p-6 rounded-2xl shadow-sm">
 
-        <button className="bg-[#FF6D1F] w-full py-3 text-white rounded-lg font-medium">
-          Kirim Ticket
-        </button>
-      </form>
+          <select className="w-full border p-3 rounded-lg">
+            <option>Jenis Wajib Pajak</option>
+            <option>Orang Pribadi</option>
+            <option>Badan</option>
+          </select>
 
-      <p className="mt-4 text-green-700">{status}</p>
+          <input
+            type="text"
+            placeholder="Nama"
+            className="w-full border p-3 rounded-lg"
+          />
+
+          <textarea
+            placeholder="Deskripsikan permasalahan pajak Anda"
+            className="w-full border p-3 rounded-lg h-32"
+          />
+
+          <button className="w-full bg-[#FF6D1F] text-white py-3 rounded-xl font-semibold">
+            Kirim Pertanyaan
+          </button>
+
+        </form>
+
+      </div>
     </div>
   );
 }
