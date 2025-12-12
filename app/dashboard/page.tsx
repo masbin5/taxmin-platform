@@ -1,7 +1,10 @@
+"use client";
+
 import StatCard from "@/components/StatCard";
 import ProgressBar from "@/components/ProgressBar";
-import InsightChart from "@/components/InsightChart";
 import ScrollReveal from "@/components/ScrollReveal";
+import InsightChart from "@/components/InsightChart";
+import InsightCMS from "@/components/InsightCMS";
 
 export default function DashboardPage() {
   return (
@@ -12,15 +15,9 @@ export default function DashboardPage() {
       </h1>
 
       <div className="grid md:grid-cols-3 gap-6">
-        <ScrollReveal>
-          <StatCard label="Total Insight" value={42} />
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
-          <StatCard label="Total Pertanyaan" value={128} />
-        </ScrollReveal>
-        <ScrollReveal delay={0.2}>
-          <StatCard label="User Terdaftar" value={356} />
-        </ScrollReveal>
+        <ScrollReveal><StatCard label="Total Insight" value={42} /></ScrollReveal>
+        <ScrollReveal delay={0.1}><StatCard label="Pertanyaan" value={128} /></ScrollReveal>
+        <ScrollReveal delay={0.2}><StatCard label="User" value={356} /></ScrollReveal>
       </div>
 
       <div className="mt-16">
@@ -30,8 +27,8 @@ export default function DashboardPage() {
         <ProgressBar value={68} />
       </div>
 
-      {/* Chart */}
       <InsightChart />
+      <InsightCMS />
 
     </div>
   );
